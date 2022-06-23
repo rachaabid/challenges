@@ -18,9 +18,11 @@ require('./db/connect');
 //routes
 const api = require('./routes/api');
 const apiTodo = require('./routes/api.todo');
+const apiUser = require('./routes/api.user');
 
 app.use('', api);
 app.use('', apiTodo);
+app.use('', apiUser);
 
 app.listen(process.env.port || 3000, function(){
   console.log('now listening for requests');
