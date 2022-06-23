@@ -8,7 +8,7 @@ router.get('/todos', getTodos);
 
 router.get('/todos/:idTodo', getTodoById);
 
-router.put('/todos/:idTod', updateTodoById);
+router.put('/todos/:idTodo', updateTodoById);
 
 router.delete('/todos/:idTodo', deleteById);
 
