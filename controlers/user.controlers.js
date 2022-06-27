@@ -1,6 +1,7 @@
 
 const User = require('../models/user');
 
+
 exports.createUser = async (req, res) => {
   try {
     const user = new User({
@@ -31,10 +32,10 @@ exports.getUsers = async (req, res) => {
   }
 }
 
-exports.addId = async(req, res)=>{
+exports.addId = async (req, res) => {
   try {
-    const affect = await User.findByIdAndUpdate(req.params.idUser, {$push: {todos: req.params.idTodo}}, {new: true});
-    res.send({message: 'todo affected to user'});
+    const affect = await User.findByIdAndUpdate(req.params.idUser, { $push: { todos: req.params.idTodo } }, { new: true });
+    res.send({ message: 'todo affected to user' });
   } catch (error) {
     res.status(500).send({
       message: error.message || 'some error occured while creating user'
@@ -42,10 +43,10 @@ exports.addId = async(req, res)=>{
   }
 }
 
-exports.pullId = async(req, res)=>{
+exports.pullId = async (req, res) => {
   try {
-    const desaffect = await User.findByIdAndUpdate(req.params.idUser, {$pull: {todos: req.params.todoId}}, {new: true});
-    res.send({message: 'todo desaffected to user'});
+    const desaffect = await User.findByIdAndUpdate(req.params.idUser, { $pull: { todos: req.params.todoId } }, { new: true });
+    res.send({ message: 'todo desaffected to user' });
   } catch (error) {
     res.status(500).send({
       message: error.message || 'some error occured while creating user'
