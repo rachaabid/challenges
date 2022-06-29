@@ -3,7 +3,7 @@ const cors = require('cors');
 const morgan = require ('morgan');
 
 
- require('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 
@@ -14,6 +14,9 @@ app.use(morgan('dev'));
 
 
 app.use('/uploads', express.static('uploads'));
+
+// importation du fichier cron
+const crons = require('./crons/first-cron');
 
 // connect to mongodb
 require('./db/connect');
@@ -32,7 +35,6 @@ app.use('/api/v1',apiEmail);
 app.use('/api/v1', apiUpload);
 
 app.set('view engine', 'ejs');
-
   
 app.listen(process.env.port || 3000, function(){
   console.log('now listening for requests');
